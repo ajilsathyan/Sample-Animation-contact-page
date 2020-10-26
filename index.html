@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sample Contact page</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body id="body">
     <div class="container">
+       <form id="submit-form"  action="">
         <h2>Contact Me</h2>
         <div class="row100">
             <div class="col">
                 <div class="inputBox">
-                    <input type="text" name="" required="required">
+                    
+                    <input type="text" name="firstname" required="required">
                     <span class="text">First Name</span>
                     <span class="line"></span>
+                    
                 </div>
             </div>
             <div class="col">
                 <div class="inputBox">
-                    <input type="text" name="" required="required">
+                    <input type="text" name="secondname" required="required">
                     <span class="text">Second Name</span>
                     <span class="line"></span>
                 </div>
@@ -29,14 +33,14 @@
         <div class="row100">
             <div class="col">
                 <div class="inputBox">
-                    <input type="text" name="" required="required">
+                    <input type="text" name="email" required="required">
                     <span class="text">E-mail</span>
                     <span class="line"></span>
                 </div>
             </div>
             <div class="col">
                 <div class="inputBox">
-                    <input type="text" name="" required="required">
+                    <input type="text" name="mobile" required="required">
                     <span class="text">Mobile</span>
                     <span class="line"></span>
                 </div>
@@ -45,8 +49,8 @@
         <div class="row100">
             <div class="col">
                 <div class="inputBox textarea">
-                    <textarea required="required"></textarea>
-                    <span class="text">Type ypur Message Here...</span>
+                    <textarea required="required" name="message"></textarea>
+                    <span class="text" >Type ypur Message Here...</span>
                     <span class="line"></span>
                 </div>
             </div>
@@ -56,8 +60,27 @@
             <input type="submit" value="Send">
             </div>
         </div>
+       </form>
     </div>
-
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbwxs45MJ_j2xECoX9Er7zaD18rkD7bwGOGO7l8ZKw/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 
 
 
